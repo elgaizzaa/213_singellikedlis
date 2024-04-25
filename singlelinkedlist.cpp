@@ -8,8 +8,9 @@ struct Node {
 };
 
 Node* START = NULL;
-void addNote() {
- int nim;
+
+void addNode() {
+    int nim;
     string nama;
     Node* nodeBaru = new Node();
     cout << "Masukkan NIM : ";
@@ -92,7 +93,6 @@ void traverse() {
         system("cls");
         return;
     }
-}
     else {
         Node* currentNode = START;
         while (currentNode != NULL) {
@@ -115,8 +115,7 @@ void searchData() {
         Node* currentNode = START;
         while (currentNode != NULL) {
             if (currentNode->noMhs == nim) {
-                cout << "NIM: " << currentNode->noMhs << ",Nama: " << currentNode->name <<
-        endl;
+                cout << "NIM: " << currentNode->noMhs << ",Nama: " << currentNode->name << endl;
                 return;
             }
             currentNode = currentNode->next;
@@ -127,9 +126,9 @@ void searchData() {
  int main(){
     int pilihan;
     do   
- }
+    {
      try
- {
+     {
      cout << "1.Tambah Data" << endl;
      cout << "2.Hapus Data" << endl;
      cout << "3.Tampilan Data" << endl;
@@ -138,5 +137,50 @@ void searchData() {
      cin >> pilihan;
      switch (pilihan)
      {
-       
+    case 1:
+        addNode();
+        cout << "Data Berhasil Ditambahkan" << endl;
+        system("pause");
+        system("cls");
+        break;
+    case 2:
+        if (listEmpty())
+        {
+            cout << "list Kosong" << endl;
+            system("pause");
+            system("cls");
+            break;
+        }
+
+        int nim;
+        cout << "masukkan NIM:";
+        cin >> nim;
+        if (deleteNode(nim)) {
+            cout << "nim: " << nim << "berhasil dihapus" << endl;
+            system("pause");
+            system("cls");
+        }
+        else
+            cout << "Data tidak ditemukan" << endl;
+        break;
+    case 3:
+        traverse();
+        break;
+    case 4:
+        searchData();
+        break;
+    case 5:
+        break;
+    default:
+        cout << "pilihan tidak ada" << endl;
+        break;
+    }
+}
+
+       catch (exception e)
+        {
+            cout << "terjadi kesalahan" << endl;
+        }
+    } while (pilihan != 5);
+}
 
